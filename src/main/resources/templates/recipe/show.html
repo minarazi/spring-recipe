@@ -37,9 +37,9 @@
 								</div>
 								<div class="col-md-9">
 									<ul>
-										<li>cat one</li>
-										<li>cat two</li>
-										<li>cat three</li>
+										<lith:remove="all">cat one</li>
+										<lith:remove="all">cat two</li>
+										<lith:each="category : ${recipe.categories}" th: text="${category.description}">cat three</li>
 									</ul>
 								</div>
 							</div>
