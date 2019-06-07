@@ -39,15 +39,15 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 		recipeCommand.setPrepTime(source.getPrepTime());
 		recipeCommand.setUrl(source.getUrl());
 		recipeCommand.setSource(source.getSource());
-		recipeCommand.setNotes(noteCommandConverter.convert(source.getNotes()));
+		recipeCommand.setNoteCommand(noteCommandConverter.convert(source.getNotes()));
 
 		if (source.getCategories() != null && source.getCategories().size() > 0) {
 			source.getCategories()
-					.forEach(category -> recipeCommand.getCategories().add(categoryCommandConverter.convert(category)));
+					.forEach(category -> recipeCommand.getCategoriesCommands().add(categoryCommandConverter.convert(category)));
 		}
 		if (source.getIngredient() != null && source.getIngredient().size() > 0) {
 			source.getIngredient().forEach(
-					ingredient -> recipeCommand.getIngredient().add(ingredientCommandConverter.convert(ingredient)));
+					ingredient -> recipeCommand.getIngredientCommands().add(ingredientCommandConverter.convert(ingredient)));
 		}
 		return recipeCommand;
 	}
