@@ -2,19 +2,19 @@ package guru.springframework.spring5recipeapp.converters;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
 import guru.springframework.spring5recipeapp.commands.IngredientCommand;
 import guru.springframework.spring5recipeapp.domain.Ingredient;
 import lombok.Synchronized;
 
+@Component
 public class IngredientToIngredientCommand implements Converter<Ingredient, IngredientCommand> {
-	private RecipeToRecipeCommand recipeCommandConverter;
-	private UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureCommandConverter;
 
-	public IngredientToIngredientCommand(RecipeToRecipeCommand recipeCommandConverter,
-			UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureCommandConverter) {
+	private final UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureCommandConverter;
+
+	public IngredientToIngredientCommand(UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureCommandConverter) {
 		super();
-		this.recipeCommandConverter = recipeCommandConverter;
 		this.unitOfMeasureCommandConverter = unitOfMeasureCommandConverter;
 	}
 
@@ -29,7 +29,7 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
 		ingredientCommand.setId(source.getId());
 		ingredientCommand.setAmount(source.getAmount());
 		ingredientCommand.setDescription(source.getDescription());
-		ingredientCommand.setRecipeCommand(recipeCommandConverter.convert(source.getRecipe()));
+		ingredientCommand.setRecipeId(source.getRecipe().getId());
 		ingredientCommand.setUnitOfMeasureCommand(unitOfMeasureCommandConverter.convert(source.getUnitOfMeasure()));
 		return ingredientCommand;
 	}

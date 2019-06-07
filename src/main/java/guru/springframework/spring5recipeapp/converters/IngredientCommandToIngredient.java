@@ -10,13 +10,13 @@ import lombok.Synchronized;
 
 @Component
 public class IngredientCommandToIngredient implements Converter<IngredientCommand, Ingredient> {
-	private RecipeCommandToRecipe recipeConverter;
-	private UnitOfMeasureCommandToUnitOfMeasure unitOfMeasureConverter;
+//	private final RecipeCommandToRecipe recipeConverter;
+	private final UnitOfMeasureCommandToUnitOfMeasure unitOfMeasureConverter;
 
-	public IngredientCommandToIngredient(RecipeCommandToRecipe recipeConverter,
+	public IngredientCommandToIngredient(//RecipeCommandToRecipe recipeConverter,
 			UnitOfMeasureCommandToUnitOfMeasure unitOfMeasureConverter) {
 		super();
-		this.recipeConverter = recipeConverter;
+//		this.recipeConverter = recipeConverter;
 		this.unitOfMeasureConverter = unitOfMeasureConverter;
 	}
 
@@ -31,7 +31,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
 		ingredient.setId(source.getId());
 		ingredient.setAmount(source.getAmount());
 		ingredient.setDescription(source.getDescription());
-		ingredient.setRecipe(recipeConverter.convert(source.getRecipeCommand()));
+//		ingredient.setRecipe(recipeConverter.convert(source.getRecipeCommand()));
 		ingredient.setUnitOfMeasure(unitOfMeasureConverter.convert(source.getUnitOfMeasureCommand()));
 		return ingredient;
 	}

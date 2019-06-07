@@ -11,11 +11,11 @@ import lombok.Synchronized;
 @Component
 public class NoteCommandToNote implements Converter<NoteCommand, Notes> {
 
-	private RecipeCommandToRecipe recipeConventer;
+//	private RecipeCommandToRecipe recipeConventer;
 
-	public NoteCommandToNote(RecipeCommandToRecipe recipeConventer) {
+	public NoteCommandToNote() {//RecipeCommandToRecipe recipeConventer) {
 		super();
-		this.recipeConventer = recipeConventer;
+//		this.recipeConventer = recipeConventer;
 	}
 
 	@Synchronized
@@ -28,7 +28,7 @@ public class NoteCommandToNote implements Converter<NoteCommand, Notes> {
 		final Notes notes = new Notes();
 		notes.setId(source.getId());
 		notes.setRecipeNotes(source.getRecipeNotes());
-		notes.setRecipe(recipeConventer.convert(source.getRecipeCommand()));
+//		notes.setRecipe(recipeConventer.convert(source.getRecipeCommand()));
 		return notes;
 
 	}
