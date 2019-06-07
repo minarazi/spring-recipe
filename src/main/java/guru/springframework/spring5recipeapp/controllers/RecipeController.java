@@ -36,7 +36,7 @@ public class RecipeController {
 	public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
 		RecipeCommand saveCommand = recipeService.saveRecipeCommand(command);
 
-		return "redirect : /recipe/show" + saveCommand.getId();
+		return "redirect:/recipe/show/" + saveCommand.getId();
 
 	}
 }

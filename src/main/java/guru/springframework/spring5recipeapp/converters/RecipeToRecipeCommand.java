@@ -4,6 +4,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import guru.springframework.spring5recipeapp.commands.NoteCommand;
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
 import guru.springframework.spring5recipeapp.domain.Recipe;
 import lombok.Synchronized;
@@ -41,15 +42,18 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 		recipeCommand.setPrepTime(source.getPrepTime());
 		recipeCommand.setUrl(source.getUrl());
 		recipeCommand.setSource(source.getSource());
-		recipeCommand.setNoteCommand(noteCommandConverter.convert(source.getNotes()));
+
+		if (source.getNotes() != null) {
+			recipeCommand.setNoteCommand(noteCommandConverter.convert(source.getNotes()));
+		}
 
 		if (source.getCategories() != null && source.getCategories().size() > 0) {
-			source.getCategories()
-					.forEach(category -> recipeCommand.getCategoriesCommands().add(categoryCommandConverter.convert(category)));
+			source.getCategories().forEach(
+					category -> recipeCommand.getCategoriesCommands().add(categoryCommandConverter.convert(category)));
 		}
 		if (source.getIngredient() != null && source.getIngredient().size() > 0) {
-			source.getIngredient().forEach(
-					ingredient -> recipeCommand.getIngredientCommands().add(ingredientCommandConverter.convert(ingredient)));
+			source.getIngredient().forEach(ingredient -> recipeCommand.getIngredientCommands()
+					.add(ingredientCommandConverter.convert(ingredient)));
 		}
 		return recipeCommand;
 	}
