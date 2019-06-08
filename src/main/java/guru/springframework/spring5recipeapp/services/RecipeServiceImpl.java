@@ -60,6 +60,13 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeToRecipeCommand.convert(savedRecipe);
 	}
 
+	@Transactional
+	@Override
+	public RecipeCommand findCommandById(Long l) {
+
+		return recipeToRecipeCommand.convert(findById(l));
+	}
+
 //	// for each - lambda
 //	public Set<Recipe> getRecipes2() {
 //		Set<Recipe> recipeSet = new HashSet<>();
