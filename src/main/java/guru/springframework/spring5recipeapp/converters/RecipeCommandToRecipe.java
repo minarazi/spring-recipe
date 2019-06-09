@@ -52,7 +52,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 		}
 		if (source.getIngredientCommands() != null && source.getIngredientCommands().size() > 0) {
 			source.getIngredientCommands()
-					.forEach(ingredient -> recipe.getIngredient().add(ingredientConverter.convert(ingredient)));
+					.forEach(ingredient -> recipe.getIngredients().add(ingredientConverter.convert(ingredient)));
 		}
 		return recipe;
 	}

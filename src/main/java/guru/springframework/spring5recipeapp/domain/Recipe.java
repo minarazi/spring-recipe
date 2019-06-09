@@ -53,7 +53,7 @@ public class Recipe {
 	private Byte[] image;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-	private Set<Ingredient> ingredient = new HashSet<Ingredient>();
+	private Set<Ingredient> ingredients = new HashSet<Ingredient>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notes notes;
@@ -67,9 +67,9 @@ public class Recipe {
 		notes.setRecipe(this);
 	}
 
-	public Recipe addIngredient(Ingredient ingredient) {
-		ingredient.setRecipe(this);
-		this.ingredient.add(ingredient);
+	public Recipe addIngredient(Ingredient ingredients) {
+		ingredients.setRecipe(this);
+		this.ingredients.add(ingredients);
 		return this;
 
 	}
