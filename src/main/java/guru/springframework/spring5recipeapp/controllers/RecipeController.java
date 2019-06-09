@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
 import guru.springframework.spring5recipeapp.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
-import sun.util.logging.resources.logging;
 
 @Slf4j
 @Controller
