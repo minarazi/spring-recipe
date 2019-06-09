@@ -92,13 +92,17 @@
 						<div class="panel-heading">
 							<h1 class="panel-title">Ingredients</h1>
 						</div>
+						<div class="col-md-1">
+							<a class="btn btn-default" href="#" role="button" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients' }">View</a>
+							
+						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
 									<ul>
 										<li th:remove="all">1 Cup of milk</li>
 										<li th:remove="all">1 Teaspoon of chocolate</li>
-										<li th:each="ingredient : ${recipe.ingredient}"
+										<li th:each="ingredient : ${recipe.ingredients}"
 											th:text=" ${ingredient.amount}
 											+'  '+${ingredient.description} 
 											+' _ '+${ingredient.unitOfMeasure.description}">1
@@ -144,11 +148,11 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
-									<p th:text="${recipe?.notes?.recipeNotes}">Lorem ipsum dolor sit amet,
-										consectetuer adipiscing elit. Aenean commodo ligula eget
-										dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-										dis parturient montes, nascetur ridiculus mus. Donec quam
-										felis, ultricies nec, pellentesque eu, pretium quis, sem.
+									<p th:text="${recipe?.notes?.recipeNotes}">Lorem ipsum
+										dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+										ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+										et magnis dis parturient montes, nascetur ridiculus mus. Donec
+										quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 										Nulla consequat massa quis enim. Donec pede justo, fringilla
 										vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
 										ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
