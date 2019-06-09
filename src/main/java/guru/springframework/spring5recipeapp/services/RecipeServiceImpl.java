@@ -67,6 +67,11 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeToRecipeCommand.convert(findById(l));
 	}
 
+	@Override
+	public void deletById(Long idToDelet) {
+		recipeRepository.deleteById(idToDelet);
+	}
+
 //	// for each - lambda
 //	public Set<Recipe> getRecipes2() {
 //		Set<Recipe> recipeSet = new HashSet<>();

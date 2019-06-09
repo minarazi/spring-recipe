@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
 import guru.springframework.spring5recipeapp.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
+import sun.util.logging.resources.logging;
 
+@Slf4j
 @Controller
 public class RecipeController {
 	private final RecipeService recipeService;
@@ -43,5 +46,15 @@ public class RecipeController {
 	public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
 		RecipeCommand saveCommand = recipeService.saveRecipeCommand(command);
 		return "redirect:/recipe/" + saveCommand.getId() + "/show";
+	}
+
+	@RequestMapping("recipe/{id}/delete")
+	public String deletById(@PathVariable Long id) {
+
+		log.debug("Deleting id:" + id);
+		recipeService.deletById(Long.valueOf(id));
+
+		return "redirect:/";
+
 	}
 }
