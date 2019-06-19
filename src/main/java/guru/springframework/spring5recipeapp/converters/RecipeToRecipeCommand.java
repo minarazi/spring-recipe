@@ -42,6 +42,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 		recipeCommand.setPrepTime(source.getPrepTime());
 		recipeCommand.setUrl(source.getUrl());
 		recipeCommand.setSource(source.getSource());
+		recipeCommand.setImage(source.getImage());
 
 		if (source.getNotes() != null) {
 			recipeCommand.setNoteCommand(noteCommandConverter.convert(source.getNotes()));
